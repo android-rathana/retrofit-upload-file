@@ -10,7 +10,8 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class MultiPartHelper {
-    public MultipartBody.Part createPart(Context context, String param, Uri uri){
+    public MultipartBody.Part createPart(Context context, String param, String filePath){
+        Uri uri= Uri.parse(filePath);
         File file=new File(uri.getPath());
         RequestBody requestBody=getRequestBody(context,file);
         MultipartBody.Part part= MultipartBody.Part.createFormData(param,file.getName(),requestBody);
